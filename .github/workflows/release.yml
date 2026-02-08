@@ -1,0 +1,26 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  sha256:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download release tarball
+        run: |
+          TAG=${GITHUB_REF_NAME}
+          URL="https://github.com/${GITHUB_REPOSITORY}/archive/refs/tags/${TAG}.tar.gz"
+          curl -L "$URL" -o source.tar.gz
+
+      - name: Compute sha256
+        run: |
+          echo "SHA256=$(sha256sum source.tar.gz | awk '{print $1}')" >> $GITHUB_ENV
+
+      - name: Print result
+        run: |
+          echo "Release tag: $GITHUB_REF_NAME"
+          echo "sha256: $SHA256"
