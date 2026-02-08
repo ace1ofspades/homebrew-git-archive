@@ -6,7 +6,9 @@ class GitArchive < Formula
   license "MIT"
 
   def install
+    libexec.install Dir["lib/*"]
     bin.install "bin/git-archive"
+    bin.env_script_all_files libexec
   end
 
   test do
