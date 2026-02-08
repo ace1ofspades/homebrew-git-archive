@@ -7,12 +7,15 @@ class GitArchive < Formula
 
   def install
     libexec.install Dir["lib/*"]
-
-    # Install main executable directly to bin
     bin.install "bin/git-archive"
+
+    bin.env_script_all_files(
+      libexec: libexec,
+      GIT_ARCHIVE_VERSION: "0.2.1"
+    )
   end
 
   test do
-    assert_match "git-archive 0.2.1", shell_output("#{bin}/git-archive --version")
+    system "#{bin}/git-archive", "--version"
   end
 end
