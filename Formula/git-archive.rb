@@ -7,8 +7,13 @@ class GitArchive < Formula
 
   def install
     libexec.install Dir["lib/*"]
-    bin.install "bin/git-archive"
-    bin.env_script_all_files(libexec: libexec)
+
+    # Install the main script under libexec
+    libexec.install "bin/git-archive"
+
+    # Create wrapper in bin/ with proper env
+    bin.write_env_script libexec/"git-archive",
+      GIT_ARCHIVE_LIB: libexec
   end
 
   test do
