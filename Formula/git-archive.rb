@@ -9,10 +9,9 @@ class GitArchive < Formula
     libexec.install Dir["lib/*"]
     bin.install "bin/git-archive"
 
-    bin.env_script_all_files(
-      libexec: libexec,
-      GIT_ARCHIVE_VERSION: "0.2.1"
-    )
+    
+    # write version from tag for runtime
+    (libexec/"VERSION").write version.to_s
   end
 
   test do
