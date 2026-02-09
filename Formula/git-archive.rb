@@ -1,8 +1,8 @@
 class GitArchive < Formula
   desc "Offline-first Git archiver with bundle, checksum, encryption and restore"
   homepage "https://github.com/ace1ofspades/git-archive"
-  url "https://github.com/ace1ofspades/git-archive/archive/refs/tags/v0.2.7.tar.gz"
-  sha256 "4c6f79a20647a1d5f9f891f654cfb803cbcec68408609fb287d69b952fb519fb"
+  url "https://github.com/ace1ofspades/git-archive/archive/refs/tags/v0.2.8.tar.gz"
+  sha256 "cf9cd79b4131440b1857b9a490ca6fb77e66c5103ca345b824ac8dd372f54a9e"
   license "MIT"
 
   def install
